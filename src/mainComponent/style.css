@@ -1,0 +1,101 @@
+#WACContainer.WACContainer .WAC__messages::-webkit-scrollbar {
+  width: 20px !important;
+}
+#WACContainer.WACContainer
+  .WAC__messages
+  WACContainer::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#WACContainer.WACContainer .WAC__messages::-webkit-scrollbar-thumb {
+  background: #f7f7f5;
+}
+
+#WACContainer.WACContainer .WAC__messages::-webkit-scrollbar-thumb:hover {
+  background: red;
+}
+
+.move {
+  display: inline-block;
+  margin: 0 0.5rem;
+  animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 5s; /* don't forget to set a duration! */
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .EarthVarient {
+    margin-top: 35vh;
+    width: 50%;
+    margin-left: 45%;
+    margin-right: 45%;
+    /* border: 2px solid red; */
+  }
+  .RedCircleVarient {
+    margin-top: 8%;
+    width: 55%;
+    left: 28%;
+    right: 10%;
+    position: absolute;
+  }
+  .IssVarient {
+    top: 12%;
+    left: 47%;
+    right: 30%;
+    position: absolute;
+    transform: rotate(65deg);
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .EarthVarient {
+    margin-top: 40vh;
+    width: 50%;
+    /* border: 2px solid green; */
+  }
+  .RedCircleVarient {
+    margin-top: 1vh;
+    width: 45%;
+    left: 32%;
+    right: 13%;
+    position: absolute;
+  }
+  .IssVarient {
+    top: 11%;
+    left: 48%;
+    /* right: 30%; */
+    position: absolute;
+    transform: rotate(65deg);
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .EarthVarient {
+    margin-top: 45vh;
+    width: 15vw;
+    padding: 0px;
+    /* margin-left: 16vw; */
+    /* margin-right: 15vw; */
+    /* border: 2px solid orange; */
+  }
+  .RedCircleVarient {
+    margin-top: 5vh;
+    width: 15vw;
+    margin-left: 1vw;
+    /* left: 30%; */
+    /* right: 13%; */
+    position: absolute;
+  }
+  .IssVarient {
+    margin-top: 5vh;
+    margin-left: 1vw;
+    /* margin-left: 1vw;
+    margin-right: 1vw; */
+    /* right: 30%; */
+    width: 4vw;
+    /* position: absolute; */
+    transform: rotate(65deg);
+  }
+}
