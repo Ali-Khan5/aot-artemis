@@ -3,7 +3,6 @@ import SpaceBG from "./Images/background-dark.svg";
 import "./style.css";
 import EarthBG from "./Images/Earth.svg";
 import ISSBG from "./Images/ISS.svg";
-import MoonBg from "./Images/Moon.svg";
 import { motion } from "framer-motion";
 import redCircle from "./Images/Group 32476.svg";
 const IconVarient = {
@@ -17,9 +16,6 @@ const IconVarient = {
   // hover: {
   //   scale: 2.6
   // }
-};
-const MoonVarient = {
-  // initial: { scale: 2.5, x: "8vh" }
 };
 const ISSVarient = {
   initial: {

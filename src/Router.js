@@ -3,9 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useRouteMatch,
-  useParams
 } from "react-router-dom";
 import Home from "./mainComponent/Home.js"
 import Demo from "./mainComponent/Demo.js"

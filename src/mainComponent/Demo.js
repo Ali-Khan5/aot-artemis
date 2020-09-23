@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SpaceBG from "./Images/space.svg";
 import SunBG from "./Images/Sun.svg";
 import VenusBG from "./Images/Venus.svg";
@@ -9,7 +9,6 @@ import MoonBg from "./Images/Moon.svg";
 import MarsBG from "./Images/Mars.svg";
 import Jupiter from "./Images/Jupiter.svg";
 import Saturno from "./Images/Saturno.svg";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const userDrivenVarient = {
@@ -112,16 +111,16 @@ const redcircleVarient = {
 };
 
 function Demo() {
-  const [isDemoOpen, setDemoOpen] = useState(true);
-  const [spaceSentence, setspaceSentence] = useState(
-    "Models are calculating any issues on ISS in real time…"
-  );
+ 
+  // const [spaceSentence, setspaceSentence] = useState(
+  //   "Models are calculating any issues on ISS in real time…"
+  // );
 
-  const helpingtext2 = () => {};
-  let arr = [
-    "Detected malfunction on Solar panel 4-A",
-    "Evaluating damages, intensity and root cause… Shortlisting SOPs to resolve issue"
-  ];
+  
+  // let arr = [
+  //   "Detected malfunction on Solar panel 4-A",
+  //   "Evaluating damages, intensity and root cause… Shortlisting SOPs to resolve issue"
+  // ];
   return (
     <div
       style={{
@@ -269,7 +268,7 @@ function Demo() {
               animate="motion"
               style={{ padding: "0px 55vh" }}
             >
-              {spaceSentence}
+              "Models are calculating any issues on ISS in real time…"
             </h2>
             {/* {helpingtext()} */}
             {/* <motion.h2
