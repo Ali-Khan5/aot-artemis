@@ -1,5 +1,5 @@
-import React,{useState}from "react";
-import SpaceBG from "./Images/space.svg";
+import React, { useState } from "react";
+import SpaceBG from "./Images/background-dark.svg";
 import SunBG from "./Images/Sun.svg";
 import VenusBG from "./Images/Venus.svg";
 import MurBG from "./Images/Mercury.svg";
@@ -38,6 +38,14 @@ const userDrivenVarient = {
   maincoreVarientStageTwo: {
     scale: 2.7,
     x: "+5vw",
+    y: "+5vh",
+    transition: {
+      duration: 2.5
+    }
+  },
+  maincoreVarientStageThree: {
+    scale: 2.7,
+    x: "+30vw",
     y: "+5vh",
     transition: {
       duration: 2.5
@@ -87,6 +95,14 @@ const IssonlyVarient = {
     transition: {
       duration: 2.5
     }
+  },
+  maincoreVarientStageThree: {
+    scale: 2,
+    x: "+15vw",
+    y: "0vh",
+    transition: {
+      duration: 2.5
+    }
   }
 };
 const moonVarient = {
@@ -98,7 +114,7 @@ const moonVarient = {
   visible: {
     scale: 1.5,
     x: "+10vw",
- 
+
     transition: {
       duration: 2.5
     }
@@ -106,7 +122,7 @@ const moonVarient = {
   maincoreVarientStageOne: {
     scale: 2.2,
     x: "+20vw",
-  
+
     transition: {
       duration: 2.5
     }
@@ -114,6 +130,13 @@ const moonVarient = {
   maincoreVarientStageTwo: {
     scale: 2.8,
     x: "+25vw",
+    transition: {
+      duration: 2.5
+    }
+  },
+  maincoreVarientStageThree: {
+    scale: 2.8,
+    x: "35vw",
     transition: {
       duration: 2.5
     }
@@ -260,24 +283,28 @@ function Demo() {
   // const [spaceSentence, setspaceSentence] = useState(
   //   "Models are calculating any issues on ISS in real time…"
   // );
-  const [textCounter,setTextCounter]=useState(0);
+  const [textCounter, setTextCounter] = useState(0);
   const [leftanimation, CycleLeftAnimation] = useCycle(
     "visible",
     "leftVarientStageOne",
+    "leftVarientStagetwo",
     "leftVarientStagetwo"
   );
   const [rightanimation, CycleRightAnimation] = useCycle(
     "visible",
     "rightVarientStageOne",
+    "rightVarientStagetwo",
     "rightVarientStagetwo"
   );
   const [mainanimation, CycleMainAnimation] = useCycle(
     "visible",
     "maincoreVarientStageOne",
-    "maincoreVarientStageTwo"
+    "maincoreVarientStageTwo",
+    "maincoreVarientStageThree"
   );
   let arr = [
-    "Models are calculating any issues on ISS in real time…", "Detected malfunction on Solar panel 4-A",
+    "Models are calculating any issues on ISS in real time…",
+    "Detected malfunction on Solar panel 4-A",
     "Evaluating damages, intensity and root cause… Shortlisting SOPs to resolve issue"
   ];
   return (
@@ -299,9 +326,9 @@ function Demo() {
             CycleRightAnimation();
             CycleMainAnimation();
             console.log("sun CLicked");
-            if(textCounter<2){
-              setTextCounter(textCounter+1);
-              console.log(textCounter,'val', ' i am ruuning')
+            if (textCounter < 2) {
+              setTextCounter(textCounter + 1);
+              console.log(textCounter, "val");
             }
           }}
         >
@@ -442,26 +469,8 @@ function Demo() {
               animate="motion"
               style={{ padding: "0px 10vw" }}
             >
-            {arr[textCounter]}
+              {arr[textCounter]}
             </h2>
-            {/* {helpingtext()} */}
-            {/* <motion.h2
-              className="text-white"
-              variants={TextVarient}
-              initial="initial"
-              style={{ padding: "0px 55vh" }}
-            >
-             Detected malfunction on Solar panel 4-A
-            </motion.h2> */}
-
-            {/* <motion.h2
-              className="text-white"
-              variants={TextVarient}
-              initial="initial"
-              style={{ padding: "0px 55vh" }}
-            >
-           Evaluating damages, intensity and root cause… Shortlisting SOPs to resolve issue
-            </motion.h2> */}
           </div>
         </div>
       </div>

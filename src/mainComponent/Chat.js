@@ -60,9 +60,14 @@ class Chat extends React.Component {
     const element = document.querySelector("#Mychatbox");
     console.log(element);
     window.watsonAssistantChatOptions = {
-      integrationID: "4ec71066-6fdc-48d1-a1ca-f124a12527eb", // The ID of this integration.
+      integrationID: "a54c4d35-a8ca-4b42-83bd-dd9569d83cf5", // The ID of this integration.
       region: "us-south", // The region your integration is hosted in.
-      serviceInstanceID: "e4771da5-2986-4076-9c10-013d08f4f70a", // The ID of your service instance.
+      serviceInstanceID: "b36c943c-68cd-4910-bb69-e4b73bc7ad1c", // The ID of your service instance.
+    
+        // integrationID: "89b9ecdd-eb7f-4e88-8cb6-3137517ba034", // The ID of this integration.
+        // region: "us-south", // The region your integration is hosted in.
+        // serviceInstanceID: "b36c943c-68cd-4910-bb69-e4b73bc7ad1c", // The ID of your service instance
+
       // Provide the custom element.
       element: element,
       // Hide the close button since we want it always open.

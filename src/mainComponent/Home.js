@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SpaceBG from "./Images/space.svg";
+import SpaceBG from "./Images/background-dark.svg";
 import SunBG from "./Images/Sun.svg";
 import VenusBG from "./Images/Venus.svg";
 import MurBG from "./Images/Mercury.svg";
