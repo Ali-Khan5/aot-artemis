@@ -9,9 +9,8 @@ import MoonBg from "./Images/Moon.svg";
 import MarsBG from "./Images/Mars.svg";
 import Jupiter from "./Images/Jupiter.svg";
 import Saturno from "./Images/Saturno.svg";
-// import redCircle from "./Images/redcircledemo.svg";
+import {withRouter,Link } from "react-router-dom";
 import { motion, useCycle } from "framer-motion";
-
 const userDrivenVarient = {
   // visible: {
   //   y: [+60, +60, +60, +60],
@@ -83,7 +82,7 @@ const IssonlyVarient = {
   maincoreVarientStageOne: {
     scale: 2,
     x: "-10vw",
-    y: "+15vh",
+    y: "+10vh",
     transition: {
       duration: 2.5
     }
@@ -91,15 +90,16 @@ const IssonlyVarient = {
   maincoreVarientStageTwo: {
     scale: 2,
     x: "-10vw",
-    y: "0vh",
+    y: "-5vh",
     transition: {
       duration: 2.5
     }
   },
   maincoreVarientStageThree: {
     scale: 2,
-    x: "+15vw",
-    y: "0vh",
+    x: "+32vw",
+    y: "-15vh",
+    rotate: 65,
     transition: {
       duration: 2.5
     }
@@ -268,28 +268,32 @@ const venusVarient = {
     }
   }
 };
-// const redcircleVarient = {
-//   visible: {
-//     opacity: 0
-//   },
-//   motion: {
-//     opacity: 1,
 
-//     transition: { duration: 2, delay: 1.5 }
-//   }
-// };
+const Chatmode = {
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 1.5
+    }
+  },
+  hidden: {
+    opacity: 0,
+    transition: {
+      duration: 1.5
+    }
+  }
+};
 
-function Demo() {
-  // const [spaceSentence, setspaceSentence] = useState(
-  //   "Models are calculating any issues on ISS in real time…"
-  // );
+function Demo(props) {
   const [textCounter, setTextCounter] = useState(0);
+  const [motionCounter, setMotionCounter] = useState(0);
   const [leftanimation, CycleLeftAnimation] = useCycle(
     "visible",
     "leftVarientStageOne",
     "leftVarientStagetwo",
     "leftVarientStagetwo"
   );
+  const [ShowDemo, CycleShowDemo] = useCycle("visible", "hidden");
   const [rightanimation, CycleRightAnimation] = useCycle(
     "visible",
     "rightVarientStageOne",
@@ -317,7 +321,11 @@ function Demo() {
         overflowX: "hidden"
       }}
     >
-      <div className="container-fluid">
+      <motion.div
+        className="container-fluid"
+        variants={Chatmode}
+        animate={ShowDemo}
+      >
         <div
           className="row"
           style={{ paddingTop: "10vh" }}
@@ -329,6 +337,18 @@ function Demo() {
             if (textCounter < 2) {
               setTextCounter(textCounter + 1);
               console.log(textCounter, "val");
+            }
+            if (motionCounter <= 2) {
+              setMotionCounter(motionCounter + 1);
+              console.log(motionCounter, "motion");
+              if (motionCounter === 2) {
+                CycleShowDemo();
+                console.log(" i am running inside cycleshowdemo");
+                setTimeout(() => {
+                  
+                  props.history.push('/modeldriven')
+                }, 2000);  
+              }
             }
           }}
         >
@@ -471,11 +491,27 @@ function Demo() {
             >
               {arr[textCounter]}
             </h2>
+            <Link to="/modeldriven">
+              {" "}
+              <button
+                className="btn btn-warning"
+                style={{
+                  borderRadius: "40px"
+                }}
+              >
+                Skip Demo (model driven)
+              </button>
+            </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
+
+      
+        
+        
+      
     </div>
   );
 }
 
-export default Demo;
+export default withRouter(Demo);

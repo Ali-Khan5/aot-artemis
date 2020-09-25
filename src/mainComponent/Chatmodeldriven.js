@@ -1,6 +1,7 @@
 import React from "react";
-import SpaceBG from "./Images/background-dark.svg";
 import "./style.css";
+import SpaceBG from "./Images/background-dark.svg";
+
 import EarthBG from "./Images/Earth.svg";
 import ISSBG from "./Images/ISS.svg";
 import { motion } from "framer-motion";
@@ -20,6 +21,15 @@ const IconVarient = {
       duration: 2
     }
   }
+  // visible: {
+  //   transition: {
+  //     duration: 2.9,
+  //     yoyo: Infinity
+  //   }
+  // },
+  // hover: {
+  //   scale: 2.6
+  // }
 };
 const ISSVarient = {
   initial: {
@@ -34,11 +44,36 @@ const ISSVarient = {
       duration: 2
     }
   }
-  
+  // visible: {
+  //   y: "-3vh",
+  //   transition: {
+  //     duration: 2.9,
+  //     yoyo: Infinity
+  //   }
+  // },
+
+  // hover: {
+  //   scale: 2.6
+  // }
 };
+
+ 
 const redCircleVarient = {
+  // initial: {
+  //   rotate: 0
+  // },
+  // visible: {
+  //   y: "-2vh",
+  //   transition: {
+  //     duration: 2.9,
+  //     yoyo: Infinity
+  //   }
+  // },
+  // hover: {
+  //   scale: 2.6
+  // }
   initial: {
-    opacity: 0
+    opacity: 0,
   },
   motion: {
     opacity: 1,
@@ -50,19 +85,16 @@ const redCircleVarient = {
 class Chat extends React.Component {
   constructor(props) {
     super(props);
+    // Don't do this!
     this.state = { color: "red" };
   }
   componentDidMount() {
     const element = document.querySelector("#Mychatbox");
     console.log(element);
     window.watsonAssistantChatOptions = {
-      integrationID: "a54c4d35-a8ca-4b42-83bd-dd9569d83cf5", // The ID of this integration.
+      integrationID: "89b9ecdd-eb7f-4e88-8cb6-3137517ba034", // The ID of this integration.
       region: "us-south", // The region your integration is hosted in.
-      serviceInstanceID: "b36c943c-68cd-4910-bb69-e4b73bc7ad1c", // The ID of your service instance.
-
-      // integrationID: "89b9ecdd-eb7f-4e88-8cb6-3137517ba034", // The ID of this integration.
-      // region: "us-south", // The region your integration is hosted in.
-      // serviceInstanceID: "b36c943c-68cd-4910-bb69-e4b73bc7ad1c", // The ID of your service instance
+      serviceInstanceID: "b36c943c-68cd-4910-bb69-e4b73bc7ad1c", // The ID of your service instance
 
       // Provide the custom element.
       element: element,
@@ -148,7 +180,6 @@ class Chat extends React.Component {
                   variants={ISSVarient}
                   animate="motion"
                   initial="initial"
-                  whileHover="hover"
                 />
 
                 <motion.img
@@ -158,14 +189,14 @@ class Chat extends React.Component {
                   animate="motion"
                   initial="initial"
                 />
+
                 <motion.img
                   src={EarthBG}
                   className="EarthVarient"
                   variants={IconVarient}
                   animate="motion"
                   initial="initial"
-                  whileHover="hover"
-                
+                 
                 />
               </div>
             </div>

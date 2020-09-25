@@ -134,22 +134,9 @@ const IssonlyVarient = {
   }
 };
 
-// for description
-
-// const userDrivenVarient = {
-//   stationary:{
-//     scale:0
-//   },
-//   moving:{
-//     scale:[1,1.5,2,2.5],
-//     transition:[1.4,2,2.8,3.5]
-//   }
-
-// };
 function Home() {
   const [isOpen, setIsOpen] = useState(true);
   const [isOpenISS, setIsOpenISS] = useState(true);
-  // const [isDemoOpen,setDemoOpen]=useState(true);
   return (
     <div
       style={{
@@ -168,7 +155,7 @@ function Home() {
             animate={isOpen ? "stationary" : "moving"}
             variants={LeftVarient}
           >
-            <img src={SunBG} height="350vh" alt={'Sun'}  />
+            <img src={SunBG} height="350vh" alt={"Sun"} />
           </motion.div>
           {/* sun Div ends */}
 
@@ -178,7 +165,7 @@ function Home() {
             animate={isOpen ? "stationary" : "moving"}
             variants={LeftVarient}
           >
-            <img src={MurBG} style={{ marginTop: "25vh" }} alt={'murcury'} />
+            <img src={MurBG} style={{ marginTop: "25vh" }} alt={"murcury"} />
           </motion.div>
           {/* Murcury Div Ends */}
 
@@ -189,7 +176,7 @@ function Home() {
             animate={isOpen ? "stationary" : "moving"}
             variants={LeftVarient}
           >
-            <img src={VenusBG} style={{ marginTop: "20vh" }}   alt={' Venus'} />
+            <img src={VenusBG} style={{ marginTop: "20vh" }} alt={" Venus"} />
           </motion.div>
           {/* Venus Div Ends */}
           {/* Earth div start */}
@@ -201,12 +188,12 @@ function Home() {
                 top: "10vh",
                 // top: `${isOpen ?"10vh" : "0vh" }`,
                 // left: `${isOpen ?"10vh" : "-5vh" }`,
-                // border: "2px solid red",
+
                 padding: "0",
                 position: "absolute",
                 transform: "rotate(40deg)"
               }}
-              alt={' ISS'} 
+              alt={" ISS"}
               animate={isOpen ? "stationary" : "moving"}
               variants={
                 !(isOpenISS || isOpen) ? IssonlyVarient : IssEarthVarient
@@ -227,7 +214,7 @@ function Home() {
                 padding: "0",
                 position: "absolute"
               }}
-              alt={' Moon'} 
+              alt={" Moon"}
               animate={isOpen ? "stationary" : "moving"}
               variants={MoonVarient}
             />
@@ -250,7 +237,7 @@ function Home() {
                   cursor: "pointer"
                   // border: "2px solid green"
                 }}
-                alt={' Earth'} 
+                alt={" Earth"}
                 onClick={() => {
                   if (!isOpenISS && !isOpen) {
                     setIsOpen(true);
@@ -333,7 +320,7 @@ function Home() {
             animate={isOpen ? "stationary" : "moving"}
             variants={RightVarient}
           >
-            <img src={MarsBG} style={{ marginTop: "25vh" }} alt={'Mars'}/>
+            <img src={MarsBG} style={{ marginTop: "25vh" }} alt={"Mars"} />
           </motion.div>
           <motion.div
             className="col-2"
@@ -341,45 +328,50 @@ function Home() {
             animate={isOpen ? "stationary" : "moving"}
             variants={RightVarient}
           >
-            <img src={Jupiter} style={{ marginTop: "25vh", height: "38vh" }} alt={'Jupiter'}/>
+            <img
+              src={Jupiter}
+              style={{ marginTop: "25vh", height: "38vh" }}
+              alt={"Jupiter"}
+            />
           </motion.div>
           <motion.div
             className="col-2"
             animate={isOpen ? "stationary" : "moving"}
             variants={RightVarient}
           >
-            <img src={Saturno} style={{ marginTop: "15vh", height: "33vh" }} alt={'Saturn'} />
+            <img
+              src={Saturno}
+              style={{ marginTop: "15vh", height: "33vh" }}
+              alt={"Saturn"}
+            />
           </motion.div>
         </div>
         <div className="row">
           <div className="col-2">
-            <Link to="/chat">
+            <Link to="/userdriven">
               {" "}
               <button
                 className="btn btn-warning"
                 style={{
                   borderRadius: "40px",
-                  color: "red",
-                  // paddingRight: "15px",
-                  // paddingLeft: "15px"
+                  color: "red"
                 }}
               >
                 Start Demo (user driven)
               </button>
             </Link>
           </div>
-          <div className="col-2" style={{marginLeft:'70px'}}>
-            <Link to="/demo">  <button
-              className="btn btn-warning"
-              style={{
-                borderRadius: "40px",
-                // paddingRight: "15px",
-                // paddingLeft: "15px"
-              }}
-             
-            >
-              Start Demo (model driven)
-            </button>
+          <div className="col-2" style={{ marginLeft: "70px" }}>
+            <Link to="/demo">
+              {" "}
+              <button
+                className="btn btn-warning"
+                style={{
+                  borderRadius: "40px"
+                }}
+              >
+                Start Demo (model driven)
+              </button>
             </Link>
           </div>
         </div>

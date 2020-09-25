@@ -8,14 +8,18 @@ import Home from "./mainComponent/Home.js"
 import Demo from "./mainComponent/Demo.js"
 import Navbar from "./SmallComponent/Navbar.js"
 import Chathome from "./mainComponent/Chat"
+import Chatmodel from "./mainComponent/Chatmodeldriven"
 export default function MyRoute() {
   return (
     <Router>
    
         <Navbar/> 
         <Switch>
-        <Route path="/chat">
+        <Route path="/userdriven">
             <Chathome />
+          </Route>
+          <Route path="/modeldriven">
+            <Chatmodel />
           </Route>
           <Route path="/demo">
             <Demo />
