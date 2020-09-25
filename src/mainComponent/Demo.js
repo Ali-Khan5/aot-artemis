@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState}from "react";
 import SpaceBG from "./Images/space.svg";
 import SunBG from "./Images/Sun.svg";
 import VenusBG from "./Images/Venus.svg";
@@ -9,34 +9,114 @@ import MoonBg from "./Images/Moon.svg";
 import MarsBG from "./Images/Mars.svg";
 import Jupiter from "./Images/Jupiter.svg";
 import Saturno from "./Images/Saturno.svg";
-import { motion } from "framer-motion";
+// import redCircle from "./Images/redcircledemo.svg";
+import { motion, useCycle } from "framer-motion";
 
 const userDrivenVarient = {
+  // visible: {
+  //   y: [+60, +60, +60, +60],
+  //   x: [+70, +70, +70, +70],
+  //   scale: [1, 1.5, 2, 2.5],
+  //   transition: { duration: 10, type: "tween", times: [0, 0.3, 0.6, 0.9] }
+  // },
   visible: {
-    y: [+60, +60, +60, +60],
-    x: [+70, +70, +70, +70],
-    scale: [1, 1.5, 2, 2.5],
-    transition: { duration: 10, type: "tween", times: [0, 0.3, 0.6, 0.9] }
+    scale: 2,
+    x: "+5vw",
+    y: "+5vh",
+    transition: {
+      duration: 2.5
+    }
+  },
+  maincoreVarientStageOne: {
+    scale: 2.5,
+    x: "+5vw",
+    y: "+5vh",
+    transition: {
+      duration: 2.5
+    }
+  },
+  maincoreVarientStageTwo: {
+    scale: 2.7,
+    x: "+5vw",
+    y: "+5vh",
+    transition: {
+      duration: 2.5
+    }
   }
+  // },
+  // leftVarientStagetwo:{
+  //   scale: 2,
+  //   x: "-120%",
+  //   transition: {
+  //     duration: 2.5
+  //   }
+  // }
 };
 const IssonlyVarient = {
-  moving: {
-    scale: [1, 1.5, 2, 2],
-    x: ["0vh", "-5vh", "-10vh", "-10vh"],
-    rotate: -25,
-    y: ["0vh", "15vh", "15vh", "5vh"],
+  // moving: {
+  //   scale: [1, 1.5, 2, 2],
+  //   x: ["0vh", "-5vh", "-10vh", "-10vh"],
+  //   rotate: -25,
+  //   y: ["0vh", "15vh", "15vh", "5vh"],
+  //   transition: {
+  //     duration: 10,
+  //     type: "tween",
+  //     times: [0, 0.3, 0.6, 0.9]
+  //   }
+  // }
+  visible: {
+    scale: 1.5,
+    x: "-5vw",
+    y: "15vh",
     transition: {
-      duration: 10,
-      type: "tween",
-      times: [0, 0.3, 0.6, 0.9]
+      duration: 2.5
+    }
+  },
+  maincoreVarientStageOne: {
+    scale: 2,
+    x: "-10vw",
+    y: "+15vh",
+    transition: {
+      duration: 2.5
+    }
+  },
+  maincoreVarientStageTwo: {
+    scale: 2,
+    x: "-10vw",
+    y: "0vh",
+    transition: {
+      duration: 2.5
     }
   }
 };
 const moonVarient = {
+  // visible: {
+  //   x: ["10vh", "15vh", "20vh", "30vh"],
+  //   scale: [1, 1.5, 2, 2.2],
+  //   transition: { duration: 10, type: "tween", times: [0, 0.3, 0.6, 0.9] }
+  // }
   visible: {
-    x: ["10vh", "15vh", "20vh", "30vh"],
-    scale: [1, 1.5, 2, 2.2],
-    transition: { duration: 10, type: "tween", times: [0, 0.3, 0.6, 0.9] }
+    scale: 1.5,
+    x: "+10vw",
+ 
+    transition: {
+      duration: 2.5
+    }
+  },
+  maincoreVarientStageOne: {
+    scale: 2.2,
+    x: "+20vw",
+  
+    transition: {
+      duration: 2.5
+    }
+  },
+  maincoreVarientStageTwo: {
+    scale: 2.8,
+    x: "+25vw",
+    transition: {
+      duration: 2.5
+    }
   }
 };
 const TextVarient = {
@@ -48,79 +128,158 @@ const TextVarient = {
 const LeftVarient = {
   visible: {
     scale: 2,
-    opacity: 0,
-    x: "-100%",
+    x: "-85%",
     transition: {
-      duration: 4.2
+      duration: 2.5
+    }
+  },
+  leftVarientStageOne: {
+    scale: 2,
+    x: "-115%",
+    transition: {
+      duration: 2.5
     }
   }
+  // },
+  // leftVarientStagetwo:{
+  //   scale: 2,
+  //   x: "-120%",
+  //   transition: {
+  //     duration: 2.5
+  //   }
+  // }
 };
 const RightVarient = {
+  // visible: {
+  //   opacity: 0,
+  //   scale: 1.5,
+  //   x: "+100%",
+  //   transition: {
+  //     duration: 3.2
+  //   }
+  // }
+
   visible: {
-    opacity: 0,
-    scale: 1.5,
-    x: "+100%",
+    scale: 1.3,
+    x: "+20vw",
     transition: {
-      duration: 3.2
+      duration: 2.5
+    }
+  },
+  rightVarientStageOne: {
+    scale: 1.5,
+    x: "+50vw",
+    transition: {
+      duration: 2.5
     }
   }
 };
 const marsVarient = {
+  // visible: {
+  //   x: 40,
+  //   transition: { duration: 10, type: "tween" }
+  // },
+  // motion: {
+  //   scale: [1, 2, 2.5, 2.8],
+  //   x: ["05vh", "+30vh", "+55vh", "+95vh"],
+  //   transition: { duration: 15, type: "tween", times: [0, 0.2, 0.4, 0.7] }
+  // },
   visible: {
-    x: 40,
-    transition: { duration: 10, type: "tween" }
+    scale: 1.6,
+    x: "+15vw",
+    transition: { duration: 2.5 }
   },
-  motion: {
-    scale: [1, 2, 2.5, 2.8],
-    x: ["05vh", "+30vh", "+55vh", "+95vh"],
-    transition: { duration: 15, type: "tween", times: [0, 0.2, 0.4, 0.7] }
+  rightVarientStageOne: {
+    scale: 2,
+    x: "+30vw",
+    transition: {
+      duration: 2.5
+    }
+  },
+  rightVarientStagetwo: {
+    scale: 2,
+    x: "+65vw",
+    transition: {
+      duration: 2.5
+    }
   }
 };
 
 const mercuryVarient = {
   visible: {
-    x: 0,
-    transition: { duration: 10, type: "tween" }
+    scale: 1.8,
+    x: "-10vw",
+    transition: { duration: 2.5 }
   },
-  motion: {
-    scale: [1, 1.5, 2, 2],
-    x: ["0vh", "-25vh", "-38vh", "-65vh"],
-    transition: { duration: 15, type: "tween", times: [0, 0.2, 0.4, 0.7] }
+  leftVarientStageOne: {
+    scale: 2.5,
+    x: "-30vw",
+    transition: {
+      duration: 2.5
+    }
   }
 };
 const venusVarient = {
+  // motion: {
+  //   scale: [1, 1.6, 2, 2],
+  //   x: ["0vh", "-15vh", "-25vh", "-65vh"],
+  //   transition: { duration: 15, type: "tween", times: [0, 0.2, 0.4, 0.7] }
+  // },
   visible: {
-    x: 0,
-    transition: { duration: 10, type: "tween" }
+    scale: 1.6,
+    x: "-5vw",
+    transition: { duration: 2.5 }
   },
-  motion: {
-    scale: [1, 1.6, 2, 2],
-    x: ["0vh", "-15vh", "-25vh", "-65vh"],
-    transition: { duration: 15, type: "tween", times: [0, 0.2, 0.4, 0.7] }
+  leftVarientStageOne: {
+    scale: 2,
+    x: "-25vw",
+    transition: {
+      duration: 2.5
+    }
+  },
+  leftVarientStagetwo: {
+    scale: 2,
+    x: "-65vw",
+    transition: {
+      duration: 2.5
+    }
   }
 };
-const redcircleVarient = {
-  visible: {
-    opacity: 0
-  },
-  motion: {
-    opacity: 1,
+// const redcircleVarient = {
+//   visible: {
+//     opacity: 0
+//   },
+//   motion: {
+//     opacity: 1,
 
-    transition: { duration: 2, delay: 10.5 }
-  }
-};
+//     transition: { duration: 2, delay: 1.5 }
+//   }
+// };
 
 function Demo() {
- 
   // const [spaceSentence, setspaceSentence] = useState(
   //   "Models are calculating any issues on ISS in real time…"
   // );
-
-  
-  // let arr = [
-  //   "Detected malfunction on Solar panel 4-A",
-  //   "Evaluating damages, intensity and root cause… Shortlisting SOPs to resolve issue"
-  // ];
+  const [textCounter,setTextCounter]=useState(0);
+  const [leftanimation, CycleLeftAnimation] = useCycle(
+    "visible",
+    "leftVarientStageOne",
+    "leftVarientStagetwo"
+  );
+  const [rightanimation, CycleRightAnimation] = useCycle(
+    "visible",
+    "rightVarientStageOne",
+    "rightVarientStagetwo"
+  );
+  const [mainanimation, CycleMainAnimation] = useCycle(
+    "visible",
+    "maincoreVarientStageOne",
+    "maincoreVarientStageTwo"
+  );
+  let arr = [
+    "Models are calculating any issues on ISS in real time…", "Detected malfunction on Solar panel 4-A",
+    "Evaluating damages, intensity and root cause… Shortlisting SOPs to resolve issue"
+  ];
   return (
     <div
       style={{
@@ -132,14 +291,27 @@ function Demo() {
       }}
     >
       <div className="container-fluid">
-        <div className="row" style={{ paddingTop: "10vh" }}>
+        <div
+          className="row"
+          style={{ paddingTop: "10vh" }}
+          onClick={() => {
+            CycleLeftAnimation();
+            CycleRightAnimation();
+            CycleMainAnimation();
+            console.log("sun CLicked");
+            if(textCounter<2){
+              setTextCounter(textCounter+1);
+              console.log(textCounter,'val', ' i am ruuning')
+            }
+          }}
+        >
           {/* sun Div */}
           <motion.div className="col-2">
             <motion.img
               src={SunBG}
               height="350vh"
               variants={LeftVarient}
-              animate="visible"
+              animate={leftanimation}
             />
           </motion.div>
           {/* sun Div ends */}
@@ -150,7 +322,7 @@ function Demo() {
               src={MurBG}
               style={{ marginTop: "25vh" }}
               variants={mercuryVarient}
-              animate="motion"
+              animate={leftanimation}
             />
           </motion.div>
           {/* Murcury Div Ends */}
@@ -161,7 +333,7 @@ function Demo() {
               src={VenusBG}
               style={{ marginTop: "20vh" }}
               variants={venusVarient}
-              animate="motion"
+              animate={leftanimation}
             />
           </motion.div>
           {/* Venus Div Ends */}
@@ -179,22 +351,24 @@ function Demo() {
                 transform: "rotate(40deg)"
               }}
               variants={IssonlyVarient}
-              animate="moving"
+              animate={mainanimation}
             />
-            <motion.div
-              style={{
-                position: "absolute",
-                width: "180px",
-                height: "180px",
-                borderRadius: "100px",
-                border: "3px red dotted",
-                left: "-70px",
-                top: "90px"
-              }}
-              variants={redcircleVarient}
-              initial="visible"
-              animate="motion"
-            ></motion.div>
+            {/* <motion.div
+            >
+              <motion.img
+                // className="RedCircleVarient"
+                src={redCircle}
+                variants={redcircleVarient}
+                animate="motion"
+                initial="visible"
+                style={{
+                  position: "absolute",
+                  height: "24vh",
+                  left: "-3vw",
+                  top: "5vh"
+                }}
+              />
+            </motion.div> */}
 
             <motion.img
               src={MoonBg}
@@ -207,7 +381,7 @@ function Demo() {
                 position: "absolute"
               }}
               variants={moonVarient}
-              animate="visible"
+              animate={mainanimation}
             />
             <motion.div
               style={{
@@ -227,7 +401,7 @@ function Demo() {
                   // border: "2px solid green"
                 }}
                 variants={userDrivenVarient}
-                animate="visible"
+                animate={mainanimation}
               />
             </motion.div>
           </div>
@@ -238,7 +412,7 @@ function Demo() {
               src={MarsBG}
               style={{ marginTop: "25vh" }}
               variants={marsVarient}
-              animate="motion"
+              animate={rightanimation}
             />
           </motion.div>
           <motion.div className="col-2" style={{ marginLeft: "0" }}>
@@ -246,7 +420,7 @@ function Demo() {
               src={Jupiter}
               style={{ marginTop: "25vh", height: "38vh" }}
               variants={RightVarient}
-              animate="visible"
+              animate={rightanimation}
             />
           </motion.div>
           <motion.div className="col-2">
@@ -254,7 +428,7 @@ function Demo() {
               src={Saturno}
               style={{ marginTop: "15vh", height: "33vh" }}
               variants={RightVarient}
-              animate="visible"
+              animate={rightanimation}
             />{" "}
             />
           </motion.div>
@@ -266,9 +440,9 @@ function Demo() {
               variants={TextVarient}
               initial="initial"
               animate="motion"
-              style={{ padding: "0px 55vh" }}
+              style={{ padding: "0px 10vw" }}
             >
-              "Models are calculating any issues on ISS in real time…"
+            {arr[textCounter]}
             </h2>
             {/* {helpingtext()} */}
             {/* <motion.h2
